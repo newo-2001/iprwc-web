@@ -3,7 +3,7 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { Subscription } from "rxjs";
 import { AuthService } from "src/app/auth/auth.service";
 import { UserInfo } from "src/app/auth/user-info.model";
-import { Cart } from "src/app/shop/cart.model";
+import { OrderRequest } from "src/app/shop/order.model";
 import { CartService } from "src/app/shop/cart.service";
 import { Optional } from "../optional.model";
 
@@ -19,7 +19,7 @@ export class NavComponent implements OnInit, OnDestroy {
     userInfo: Optional<UserInfo> = null;
 
     cartSubscription?: Subscription
-    cart: Cart = {items:[]};
+    cart: OrderRequest = {items:[]};
 
     constructor(private authService: AuthService, private cartService: CartService) {}
 

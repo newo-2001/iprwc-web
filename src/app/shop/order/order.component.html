@@ -1,0 +1,9 @@
+<li>
+    <div>
+        <span>Order placed on <time attr.datetime="{{order.orderTime.toISOString()}}">{{order.orderTime.toLocaleString('nl-NL')}}</time></span>
+        <button (click)="cancelOrder()">Cancel order</button>
+    </div>
+    <ul *ngFor="let item of order.items">
+        <shop-order-item [item]="item"></shop-order-item>
+    </ul>
+</li>

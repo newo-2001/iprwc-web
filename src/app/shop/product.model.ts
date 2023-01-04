@@ -5,3 +5,10 @@ export interface Product {
     thumbnailUri?: string;
     price: number;
 }
+
+export interface CreateProductDto {
+    name: string,
+    price: number,
+    thumbnailUri?: string,
+    description?: string
+}

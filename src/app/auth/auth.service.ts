@@ -7,6 +7,7 @@ import { User } from "./user.model";
 import jwt_decode, { JwtPayload } from "jwt-decode";
 import { RegisterDto } from "./register/register-dto.model";
 import { Optional } from "../shared/optional.model";
+import { CartService } from "../shop/cart.service";
 
 @Injectable({
     providedIn: "root"
@@ -14,11 +15,12 @@ import { Optional } from "../shared/optional.model";
 export class AuthService {
     userInfo: BehaviorSubject<Optional<UserInfo>> = new BehaviorSubject<Optional<UserInfo>>(null);
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient, private cartService: CartService) {}
 
     logout(): void {
         this.userInfo.next(null);
         localStorage.removeItem("userInfo");
+        this.cartService.clearCart();
     }
 
     login(credentials: LoginDto): Observable<User> {

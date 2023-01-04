@@ -4,3 +4,8 @@ export interface Paginated<T> {
     pageSize: number;
     totalPages: number;
 }
+
+export interface PaginationRequest {
+    page: number;
+    pageSize: number;
+}

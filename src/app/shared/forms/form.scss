@@ -12,7 +12,7 @@ form {
         background-color: $color-background-dark;
     }
 
-    * {
+    *:not(.error) {
         color: $color-text;
         margin-top: $margin-big;
     }
@@ -23,12 +23,5 @@ form {
         &:hover {
             background-color: darken($color-background-dark, 10%);
         }
-    }
-
-    .error {
-        color: $color-error;
-        font-size: 0.8em;
-        height: 0.8em;
-        margin: auto;
     }
 }

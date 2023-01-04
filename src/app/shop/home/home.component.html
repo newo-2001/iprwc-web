@@ -1,7 +1,7 @@
 <section>
     <ul class="products">
         <li *ngFor="let product of products">
-            <shop-product [product]="product" (addToCartEvent)="addToCart($event)"></shop-product>
+            <shop-product [purchasable]="loggedIn()" [inCart]="amountInCart(product)" [product]="product" (addToCartEvent)="addToCart($event)"></shop-product>
         </li>
     </ul>
 </section>

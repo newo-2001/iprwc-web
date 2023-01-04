@@ -26,6 +26,10 @@ html {
     color: $color-text;
 }
 
+hr {
+    background-color: $color-white;
+}
+
 h1, h2, h3, h4, h5, p {
     margin: 0;
 }
@@ -54,13 +58,8 @@ a {
     }
 }
 
-button {
-    cursor: pointer;
-    transition: background-color 0.1s ease;
-
-    &:hover {
-        background-color: $color-primary;
-    }
+button:hover {
+    background-color: $color-primary;
 }
 
 button, input {
@@ -71,10 +70,23 @@ button, input {
     padding: $margin;
 }
 
+img {
+    pointer-events: none;
+    user-select: none;
+}
+
 a, button:not(:disabled) {
-    transition: color 0.1s ease;
+    cursor: pointer;
+    transition: color 0.1s ease, background-color 0.1s ease;
 
     &:hover {
         color: lighten($color-text, 20%);
     }
+}
+
+.error {
+    color: $color-error;
+    font-size: 0.8em;
+    height: 0.8em;
+    margin: auto;
 }

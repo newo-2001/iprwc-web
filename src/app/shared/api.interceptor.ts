@@ -1,12 +1,13 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs/internal/Observable";
+import { environment } from "src/environments/environment";
 
 @Injectable()
 export class ApiInterceptor implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const request = req.clone({
-            url: `http://localhost:8080${req.url}`,
+            url: environment.apiUrl + req.url,
         });
 
         return next.handle(request);

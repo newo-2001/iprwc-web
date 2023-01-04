@@ -1,0 +1,10 @@
+@import "../../../styles.scss";
+
+span:last-child {
+    transition: color 0.1s ease;
+    cursor: pointer;
+
+    &:hover {
+        color: $color-primary;
+    }
+}

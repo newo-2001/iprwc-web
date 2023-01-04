@@ -1,11 +1,11 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, Subject } from "rxjs";
-import { Cart, Item } from "./cart.model";
+import { OrderItem, OrderRequest } from "./order.model";
 import { Product } from "./product.model";
 
 @Injectable({ providedIn: "root" })
 export class CartService {
-    cartSubject: BehaviorSubject<Cart> = new BehaviorSubject<Cart>({items: []});
+    cartSubject: BehaviorSubject<OrderRequest> = new BehaviorSubject<OrderRequest>({items: []});
 
     constructor() {
         const cart = localStorage.getItem("cart");
@@ -14,8 +14,8 @@ export class CartService {
         }
     }
 
-    addToCart(item: Item): void {
-        const cart: Cart = this.cartSubject.getValue();
+    addToCart(item: OrderItem): void {
+        const cart: OrderRequest = this.cartSubject.getValue();
         const present = cart.items.find(x => x.product.id == item.product.id);
 
         if (present) {
@@ -27,8 +27,8 @@ export class CartService {
         this.saveCart(cart);
     }
 
-    removeAmountFromCart(item: Item): void {
-        const cart: Cart = this.cartSubject.getValue();
+    removeAmountFromCart(item: OrderItem): void {
+        const cart: OrderRequest = this.cartSubject.getValue();
         const present = this.getItem(cart, item.product);
         if (!present) return;
 
@@ -43,7 +43,7 @@ export class CartService {
     }
 
     removeProductFromCart(product: Product): void {
-        const cart: Cart = this.cartSubject.getValue();
+        const cart: OrderRequest = this.cartSubject.getValue();
         const present = this.getItem(cart, product);
         if (!present) return;
 
@@ -53,10 +53,15 @@ export class CartService {
         this.saveCart(cart);
     }
 
-    private saveCart(cart: Cart): void {
+    clearCart() {
+        localStorage.removeItem("cart");
+        this.cartSubject.next({items: []});
+    }
+
+    private saveCart(cart: OrderRequest): void {
         localStorage.setItem("cart", JSON.stringify(cart));
         this.cartSubject.next(cart);
     }
 
-    private getItem = (cart: Cart, product: Product) => cart.items.find(x => x.product.id == product.id);
+    private getItem = (cart: OrderRequest, product: Product) => cart.items.find(x => x.product.id == product.id);
 }

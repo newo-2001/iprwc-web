@@ -1,7 +1,8 @@
 @import "../../../styles.scss";
 
 .product {
-    width: 300px;
+    max-width: 300px;
+    min-width: 200px;
     margin: 1em;
     padding: 1em;
     border-radius: 10px;
@@ -11,16 +12,12 @@
     img {
         margin: $margin auto $margin auto;
         display: block;
-        max-width: 200px;
+        max-width: 150px;
         pointer-events: none;
         user-select: none;
     }
 
-    hr {
-        background-color: $color-white;
-    }
-
-    div > fa-icon, div span {
+    .button {
         cursor: pointer;        
         transition: color 0.1s ease;
 

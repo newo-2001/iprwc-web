@@ -1,0 +1,8 @@
+<div class="item">
+    <img src="{{getThumbnail()}}"/>
+    <div>
+        <h5>{{item.product.name}}</h5>
+        <span>x{{item.amount}} (€{{(item.product.price / 100 * item.amount).toFixed(2)}})</span>
+        <span (click)="removeItem()"><fa-icon [icon]="icons.faTrashCan"></fa-icon> Remove item</span>
+    </div>
+</div>

@@ -1,1 +1,43 @@
 @import "../../../styles.scss";
+
+section {
+    margin: auto;
+    max-width: 400px;
+    text-align: center;
+
+    a {
+        color: lighten($color-primary, 20%);
+    }
+
+    ul {
+        list-style: none;
+        padding: 1em;
+        background-color: $color-background-dark;
+        border-radius: 15px;
+
+        li:not(:first-child) {
+            margin-top: 1em;
+        }
+
+        li:last-child hr {
+            visibility: hidden;
+            position: absolute;
+        }
+    }
+
+    .menu {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .options {
+            margin-top: 1em;
+            display: flex;
+            flex-direction: row;
+        }
+
+        button {
+            margin-left: 1em;
+        }
+    }
+}

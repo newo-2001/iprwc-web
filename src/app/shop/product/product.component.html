@@ -1,15 +1,18 @@
 <div class="product">
     <h3>{{product.name}}</h3>
-    <img src="{{product.thumbnailUri ?? 'https://www.smartphonekliniek.com/wp-content/uploads/2019/07/no-image.jpg'}}">
+    <img src="{{getThumbnail()}}">
     <span>€{{(product.price / 100).toFixed(2)}}</span>
     <p>{{product.description ?? ""}}</p>
-    <hr>
-    <div>
-        <fa-icon [icon]="icons.faCircleMinus" (click)="decrement()"></fa-icon>
-        <span (click)="addToCart()">
-            <fa-icon [icon]="icons.faShoppingBasket"></fa-icon> Add {{amount}} to cart
-        </span>
-        <fa-icon [icon]="icons.faCirclePlus" (click)="increment()"></fa-icon>
+    <div *ngIf="purchasable">
+        <hr>
+        <span>{{inCart}} in cart</span>
+        <div>
+            <fa-icon class="button" [icon]="icons.faCircleMinus" (click)="decrement()"></fa-icon>
+            <span class="button" (click)="addToCart()">
+                <fa-icon [icon]="icons.faShoppingBasket"></fa-icon> {{amount > 0 ? "Add" : "Take"}} {{Math.abs(amount)}} {{amount > 0 ? "to" : "from"}} cart
+            </span>
+            <fa-icon class="button" [icon]="icons.faCirclePlus" (click)="increment()"></fa-icon>
+        </div>
+        <span>€{{(product.price / 100 * amount).toFixed(2)}}</span>
     </div>
-    <span>€{{(product.price / 100 * amount).toFixed(2)}}</span>
 </div>

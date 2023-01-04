@@ -1,0 +1,18 @@
+@import "../../../styles.scss";
+
+.item {
+    display: flex;
+    align-items: center;
+
+    img {
+        max-width: 150px;
+        max-height: 150px;
+        margin-right: 1em;
+    }
+
+    div {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+    }
+}

@@ -1,0 +1,24 @@
+<section>
+    <div *ngIf="cart.items.length > 0; else emptyCart">
+        <h3>Your cart contains {{cart.items.length}} item{{cart.items.length == 1 ? "" : "s"}}</h3>
+        <ul>
+            <li *ngFor="let item of cart.items">
+                <shop-cart-item [item]="item" (removeProductEvent)="removeProduct($event)"></shop-cart-item>
+                <hr>
+            </li>
+        </ul>
+
+        <div class="menu">
+            <span>The items in your cart sum to a total of €{{totalCost()}}</span>
+            <div class="options">
+                <button (click)="placeOrder()"><fa-icon [icon]="icons.faCreditCard"></fa-icon> Place order</button>
+                <button [routerLink]="['/']"><fa-icon [icon]="icons.faShoppingCart"></fa-icon> Continue shopping</button>
+            </div>
+            <span class="error">{{orderError}}</span>
+        </div>
+    </div>
+
+    <ng-template #emptyCart>
+        <h3>Your cart seems to be empty, <a [routerLink]="['/']">start shopping?</a></h3>
+    </ng-template>
+</section>

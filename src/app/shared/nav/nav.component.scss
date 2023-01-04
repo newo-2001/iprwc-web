@@ -14,7 +14,21 @@ nav {
             margin-left: 1em;
             flex-grow: 1;
         }
-        
+    }
 
+    .cart {
+        display: flex;
+        user-select: none;
+        align-items: center;
+        
+        .counter {
+            background-color: $color-primary;
+            text-align: center;
+            width: 1.5em;
+            height: 1.5em;
+            line-height: 1.5em;
+            margin-right: $margin;
+            border-radius: 50%;
+        }
     }
 }

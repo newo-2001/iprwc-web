@@ -1,6 +1,9 @@
 <nav>
     <div><a [routerLink]="['/']" routerLinkActive="active">Home</a></div>
-    <div *ngIf="isLoggedIn()" class="cart"><a><fa-icon [icon]="faShoppingCart"></fa-icon> Cart</a></div>
+    <div *ngIf="isLoggedIn()" class="cart">
+        <div *ngIf="cart.items.length > 0" class="counter"><span>{{cart.items.length}}</span></div>
+        <a><fa-icon [icon]="faShoppingCart"></fa-icon> Cart</a>
+    </div>
     <div *ngIf="!isLoggedIn()"><a [routerLink]="['/login']" routerLinkActive="active">Login</a></div>
     <div *ngIf="isLoggedIn()" (click)="logout()"><a>Logout</a></div>
 </nav>

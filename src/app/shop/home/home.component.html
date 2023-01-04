@@ -1,1 +1,7 @@
-<p>home works!</p>
+<section>
+    <ul class="products">
+        <li *ngFor="let product of products">
+            <shop-product [product]="product" (addToCartEvent)="addToCart($event)"></shop-product>
+        </li>
+    </ul>
+</section>

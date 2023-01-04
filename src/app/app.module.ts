@@ -7,6 +7,7 @@ import { AppComponent } from "./app.component";
 import { AuthModule } from "./auth/auth.module";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { ApiInterceptor } from "./shared/api.interceptor";
+import { ShopModule } from "./shop/shop.module";
 
 @NgModule({
     declarations: [
@@ -16,6 +17,7 @@ import { ApiInterceptor } from "./shared/api.interceptor";
         BrowserModule,
         AppRoutingModule,
         SharedModule,
+        ShopModule,
         AuthModule,
         HttpClientModule
     ],

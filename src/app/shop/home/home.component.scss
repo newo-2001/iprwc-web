@@ -1,0 +1,10 @@
+@import "../../../styles.scss";
+
+.products {
+    position: relative;
+    display: flex;
+
+    li {
+        list-style: none;
+    }
+}

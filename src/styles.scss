@@ -1,1 +1,79 @@
-/* You can add global styles to this file, and also import other style files */
+$color-background: #383838;//#606060;
+$color-background-light: lighten($color-background, 20%);
+$color-background-dark: darken($color-background, 20%);
+
+$color-primary: #990000;
+$color-text: #e6e6e6;
+
+$color-error: #FB8888;
+
+$margin: 6px;
+$margin-big: 1em;
+$column-width: 600px;
+$border-radius: 8px;
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: $color-background;
+}
+
+html {
+    font-family: "Open Sans", sans-serif;
+    color: $color-text;
+}
+
+h1, h2, h3, h4, h5, p {
+    margin: 0;
+}
+
+a {
+    cursor: pointer;
+    text-decoration: none;
+    color: $color-text;
+
+    // Hover bar effect
+    position: relative;
+
+    &:after {
+        content: "";
+        position: absolute;
+        height: 0.15em;
+        background-color: $color-primary;
+        top: 1.4em;
+        left: 0;
+        width: 0;
+        transition: width 0.1s ease;
+    }
+
+    &:hover:after{
+        width: 100%;
+    }
+}
+
+button {
+    cursor: pointer;
+    transition: background-color 0.1s ease;
+
+    &:hover {
+        background-color: $color-primary;
+    }
+}
+
+button, input {
+    border: none;
+    background-color: $color-background-dark;
+    color: $color-text;
+    border-radius: $border-radius;
+    padding: $margin;
+}
+
+a, button:not(:disabled) {
+    transition: color 0.1s ease;
+
+    &:hover {
+        color: lighten($color-text, 20%);
+    }
+}

@@ -1,0 +1,7 @@
+<form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+    <input type="email" name="email" placeholder="Email" ngModel required>
+    <input type="password" name="password" placeholder="Password" ngModel required>
+    <span class="error">{{formError}}</span>
+    <button>Login</button>
+    <a [routerLink]="['/register']">Don't have an account?</a>
+</form>

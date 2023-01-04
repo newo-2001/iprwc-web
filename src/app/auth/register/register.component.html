@@ -1,0 +1,8 @@
+<form #registrationForm="ngForm" (ngSubmit)="register(registrationForm)">
+    <input type="email" name="email" placeholder="Email" ngModel email required>
+    <span class="error">{{emailError}}</span>
+    <input type="password" name="password" placeholder="Password" ngModel required>
+    <input type="password" name="confirmPassword" placeholder="Confirm password" ngModel required>
+    <span class="error">{{passwordError}}</span>
+    <button>Register</button>
+</form>

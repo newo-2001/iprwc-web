@@ -1,0 +1,34 @@
+@import "../../../styles.scss";
+
+form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    max-width: $column-width;
+
+    input, button {
+        border: none;
+        background-color: $color-background-dark;
+    }
+
+    * {
+        color: $color-text;
+        margin-top: $margin-big;
+    }
+
+    button {
+        font-size: 1.1rem;
+
+        &:hover {
+            background-color: darken($color-background-dark, 10%);
+        }
+    }
+
+    .error {
+        color: $color-error;
+        font-size: 0.8em;
+        height: 0.8em;
+        margin: auto;
+    }
+}

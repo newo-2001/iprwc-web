@@ -1,0 +1,20 @@
+@import "../../../styles.scss";
+
+nav {
+    display: flex;
+    min-height: 3rem;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: $color-background-dark;
+
+    div {
+        margin-right: 1em;
+        
+        &:first-child {
+            margin-left: 1em;
+            flex-grow: 1;
+        }
+        
+
+    }
+}

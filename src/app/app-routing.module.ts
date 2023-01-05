@@ -1,5 +1,7 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
+import { CreateProductComponent } from "./admin/create-product/create-product.component";
+import { AdminGuard } from "./auth/admin.guard";
 import { AuthGuard } from "./auth/auth.guard";
 import { LoginComponent } from "./auth/login/login.component";
 import { IsNotAuthenticatedGuard } from "./auth/not-auth.guard";
@@ -21,7 +23,8 @@ const routes: Routes = [
     },
     {
         path: "register",
-        component: RegisterComponent
+        component: RegisterComponent,
+        canActivate: [IsNotAuthenticatedGuard]
     },
     {
         path: "cart",
@@ -32,6 +35,16 @@ const routes: Routes = [
         path: "orders",
         component: OrdersComponent,
         canActivate: [AuthGuard]
+    },
+    {
+        path: "products/:id/edit",
+        component: CreateProductComponent,
+        canActivate: [AdminGuard]
+    },
+    {
+        path: "products/create",
+        component: CreateProductComponent,
+        canActivate: [AdminGuard]
     }
 ];
 

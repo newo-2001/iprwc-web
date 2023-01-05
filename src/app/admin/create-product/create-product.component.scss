@@ -1,0 +1,16 @@
+@import "../../../styles.scss";
+
+section {
+    margin: auto;
+    max-width: $column-width;
+    position: relative;
+
+    h3 {
+        text-align: center;
+    }
+
+    div {
+        display: flex;
+        justify-content: space-evenly;
+    }
+}

@@ -6,6 +6,7 @@ import { Product } from "../product.model";
 import { ProductService } from "../product.service";
 import { Subscription } from "rxjs";
 import { AuthService } from "src/app/auth/auth.service";
+import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
     selector: "shop-home",
@@ -17,6 +18,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     
     cart: OrderRequest = {items: []};
     cartSubscription?: Subscription;
+
+    icons = { faCirclePlus };
 
     constructor(private productService: ProductService, private cartService: CartService, private authService: AuthService) {}
 
@@ -40,6 +43,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     amountInCart = (product: Product): number => this.cart.items.find(item => item.product.id == product.id)?.amount ?? 0;
 
+    isAdmin = () => this.authService.isAdmin();
     loggedIn = () => this.authService.isLoggedIn();
 
     private loadProducts(page: PaginationRequest) {

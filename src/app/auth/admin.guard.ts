@@ -8,7 +8,6 @@ export class AdminGuard implements CanActivate {
     constructor(private authService: AuthService, private router: Router) {}
 
     canActivate(): boolean | UrlTree {
-        return this.authService.userInfo.getValue()?.user.roles.includes("ROLE_ADMIN")
-            ? true : this.router.createUrlTree(["/"])
+        return this.authService.isAdmin() ? true : this.router.createUrlTree(["/"])
     }
 }

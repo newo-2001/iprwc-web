@@ -1,12 +1,14 @@
 <div class="product">
     <h3>{{product.name}}</h3>
+    <fa-icon class="button" *ngIf="editable" [icon]="icons.faPencil" (click)="edit()"></fa-icon>
     <img src="{{getThumbnail()}}">
-    <span>€{{(product.price / 100).toFixed(2)}}</span>
-    <p>{{product.description ?? ""}}</p>
+    <hr>
+    <p class="description">{{product.description ?? ""}}</p>
+    <span class="price">€{{(product.price / 100).toFixed(2)}}</span>
     <div *ngIf="purchasable">
         <hr>
         <span>{{inCart}} in cart</span>
-        <div>
+        <div class="menu">
             <span class="button" (click)="addToCart()">
                 <fa-icon [icon]="icons.faShoppingBasket"></fa-icon>  Add to cart
             </span>

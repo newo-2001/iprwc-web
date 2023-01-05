@@ -21,7 +21,14 @@ form {
         font-size: 1.1rem;
 
         &:hover {
-            background-color: darken($color-background-dark, 10%);
+            background-color: $color-primary;
         }
+    }
+
+    textarea {
+        background-color: $color-background-dark;
+        border: none;
+        border-radius: 5px;
+        height: 6em;
     }
 }

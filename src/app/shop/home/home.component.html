@@ -1,7 +1,10 @@
 <section>
     <ul class="products">
         <li *ngFor="let product of products">
-            <shop-product [purchasable]="loggedIn()" [inCart]="amountInCart(product)" [product]="product" (addToCartEvent)="addToCart($event)"></shop-product>
+            <shop-product [editable]="isAdmin()" [purchasable]="loggedIn()" [inCart]="amountInCart(product)" [product]="product" (addToCartEvent)="addToCart($event)"></shop-product>
+        </li>
+        <li class="add-product" *ngIf="isAdmin()">
+            <fa-icon class="button" [icon]="icons.faCirclePlus" [routerLink]="['/products', 'create']"></fa-icon>
         </li>
     </ul>
 </section>

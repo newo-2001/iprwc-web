@@ -2,13 +2,13 @@ $color-background: #383838;//#606060;
 $color-background-light: lighten($color-background, 20%);
 $color-background-dark: darken($color-background, 20%);
 
-$color-primary: #990000;
+$color-primary: #ff403e;
 $color-text: #e6e6e6;
 $color-white: $color-text;
 
 $color-error: #FB8888;
 
-$margin: 6px;
+$margin: 8px;
 $margin-big: 1em;
 $column-width: 600px;
 $border-radius: 8px;
@@ -50,7 +50,7 @@ a {
         top: 1.4em;
         left: 0;
         width: 0;
-        transition: width 0.1s ease;
+        transition: width 0.2s ease;
     }
 
     &:hover:after{

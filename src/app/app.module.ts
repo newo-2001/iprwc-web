@@ -8,6 +8,7 @@ import { AuthModule } from "./auth/auth.module";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { ApiInterceptor } from "./shared/api.interceptor";
 import { ShopModule } from "./shop/shop.module";
+import { AdminModule } from "./admin/admin.module";
 
 @NgModule({
     declarations: [
@@ -19,6 +20,7 @@ import { ShopModule } from "./shop/shop.module";
         SharedModule,
         ShopModule,
         AuthModule,
+        AdminModule,
         HttpClientModule
     ],
     providers: [{

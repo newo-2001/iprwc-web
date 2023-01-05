@@ -6,7 +6,7 @@ section {
     text-align: center;
 
     a {
-        color: lighten($color-primary, 20%);
+        color: $color-primary;
     }
 
     ul {

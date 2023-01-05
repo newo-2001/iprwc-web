@@ -1,0 +1,18 @@
+<section>
+    <h3>{{this.product.id ? "Update" : "Create"}} a product</h3>
+    <form #productForm="ngForm" (ngSubmit)="submit(productForm)" autocomplete="off">
+        <label for="name">Name</label>
+        <input name="name" placeholder="Name" [ngModel]="product.name" required>
+        <label for="price">Price</label>
+        <input type="number" name="price" placeholder="Price" [ngModel]="product.price" step="0.01">
+        <label for="thumnailUri">Link to thumbnail image</label>
+        <input name="thumbnailUri" placeholder="Link to thumbnail image" [ngModel]="product.thumbnailUri">
+        <label for="description">Description</label>
+        <textarea name="description" placeholder="Description" [ngModel]="product.description"></textarea>
+        <span class="error">{{formError}}</span>
+        <div>
+            <button>{{this.product.id ? "Update" : "Create"}} product</button>
+            <button *ngIf="product.id" type="button" (click)="deleteProduct()"><fa-icon [icon]="icons.faTrashCan"></fa-icon> Delete product</button>
+        </div>
+    </form>
+</section>

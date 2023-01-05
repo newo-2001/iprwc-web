@@ -8,6 +8,7 @@ import jwt_decode, { JwtPayload } from "jwt-decode";
 import { RegisterDto } from "./register/register-dto.model";
 import { Optional } from "../shared/optional.model";
 import { CartService } from "../shop/cart.service";
+import { Router } from "@angular/router";
 
 @Injectable({
     providedIn: "root"
@@ -15,12 +16,13 @@ import { CartService } from "../shop/cart.service";
 export class AuthService {
     userInfo: BehaviorSubject<Optional<UserInfo>> = new BehaviorSubject<Optional<UserInfo>>(null);
 
-    constructor(private http: HttpClient, private cartService: CartService) {}
+    constructor(private http: HttpClient, private cartService: CartService, private router: Router) {}
 
     logout(): void {
         this.userInfo.next(null);
         localStorage.removeItem("userInfo");
         this.cartService.clearCart();
+        this.router.navigate(["/"]);
     }
 
     login(credentials: LoginDto): Observable<User> {
@@ -56,4 +58,6 @@ export class AuthService {
         localStorage.setItem("userInfo", JSON.stringify(userInfo))
         this.userInfo.next(userInfo);
     }
+
+    isAdmin = (): boolean => this.userInfo.getValue()?.user.roles.includes("ROLE_ADMIN") ?? false;
 }

@@ -9,6 +9,7 @@ import { CartComponent } from "./cart/cart.component";
 import { HomeComponent } from './home/home.component';
 import { OrderItemComponent } from "./order-item/order-item.component";
 import { OrderComponent } from "./order/order.component";
+import { OrdersComponent } from "./orders/orders.component";
 import { ProductComponent } from "./product/product.component";
 
 @NgModule({
@@ -18,6 +19,7 @@ import { ProductComponent } from "./product/product.component";
         CartComponent,
         CartItemComponent,
         OrderComponent,
+        OrdersComponent,
         OrderItemComponent
     ],
     exports: [
@@ -26,6 +28,7 @@ import { ProductComponent } from "./product/product.component";
         CartComponent,
         CartItemComponent,
         OrderComponent,
+        OrdersComponent,
         OrderItemComponent
     ],
     imports: [CommonModule, FontAwesomeModule, SharedModule, RouterModule, BrowserModule]

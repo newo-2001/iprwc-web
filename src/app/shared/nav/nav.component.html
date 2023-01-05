@@ -6,6 +6,7 @@
             <span><fa-icon [icon]="faShoppingCart"></fa-icon> Cart</span>
         </a>
     </div>
+    <div *ngIf="isLoggedIn()"><a [routerLink]="['/orders']" routerLinkActive="active">Orders</a></div>
     <div *ngIf="!isLoggedIn()"><a [routerLink]="['/login']" routerLinkActive="active">Login</a></div>
     <div *ngIf="isLoggedIn()" (click)="logout()"><a>Logout</a></div>
 </nav>

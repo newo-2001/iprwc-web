@@ -58,6 +58,10 @@ export class CartService {
         this.cartSubject.next({items: []});
     }
 
+    amountInCart(product: Product): number {
+        return this.cartSubject.getValue().items.find(x => x.product.id == product.id)?.amount ?? 0;
+    }
+
     private saveCart(cart: OrderRequest): void {
         localStorage.setItem("cart", JSON.stringify(cart));
         this.cartSubject.next(cart);

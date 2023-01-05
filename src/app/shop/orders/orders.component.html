@@ -1,0 +1,8 @@
+<section>
+    <h3>You {{orders.length > 0 ? "have " + orders.length : "don't have any"}} pending orders</h3>
+    <ul *ngIf="orders.length > 0">
+        <li *ngFor="let order of orders">
+            <shop-order [order]="order" (cancelOrderEvent)="cancelOrder($event)"></shop-order>
+        </li>
+    </ul>
+</section>

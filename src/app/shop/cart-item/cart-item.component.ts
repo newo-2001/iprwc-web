@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output, TemplateRef } from "@angular/core";
-import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { faCircleMinus, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { environment } from "src/environments/environment";
 import { OrderItem } from "../order.model";
 import { Product } from "../product.model";
@@ -11,11 +11,13 @@ import { Product } from "../product.model";
 })
 export class CartItemComponent {
     @Input() item: OrderItem = null!;
-    @Output() removeProductEvent: EventEmitter<Product> = new EventEmitter<Product>();
+    @Output() removeProductEvent: EventEmitter<OrderItem> = new EventEmitter<OrderItem>();
 
-    icons = { faTrashCan }
+    icons = { faTrashCan, faCircleMinus }
 
     getThumbnail = () => this.item.product.thumbnailUri ?? environment.missingThumbnailUrl;
 
-    removeItem = () => this.removeProductEvent.emit(this.item.product);
+    removeItem(amount: number) {
+        this.removeProductEvent.emit({amount: amount, product: this.item.product});
+    }
 }

@@ -2,4 +2,33 @@
 
 ul {
     list-style: none;
+    padding-left: 0;
+    margin: 1em 0 1em 0;
+}
+
+.order {
+    background-color: $color-background-dark;
+    border-radius: 10px;
+    margin-top: 1em;
+    padding: 1em;
+    
+    .header {
+        display: flex;
+
+        span:nth-child(2) {
+            margin-left: $margin;
+            flex-grow: 1;
+
+            fa-icon {
+                position: absolute;
+                transition: transform 0.2s ease;
+            }
+        }
+    }
+
+    .body {
+        transition: height 0.5s ease;
+        overflow-y: hidden;
+        height: 0;
+    }
 }

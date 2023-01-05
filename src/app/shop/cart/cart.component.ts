@@ -1,11 +1,10 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Subscription } from "rxjs";
-import { OrderRequest } from "../order.model";
+import { OrderItem, OrderRequest, totalPrice } from "../order.model";
 import { CartService } from "../cart.service";
 import { OrderService } from "../order.service";
 import { Router } from "@angular/router";
 import { faCreditCard, faShoppingCart, faTrashCan } from "@fortawesome/free-solid-svg-icons";
-import { Product } from "../product.model";
 
 @Component({
     selector: "shop-cart",
@@ -32,12 +31,20 @@ export class CartComponent implements OnInit, OnDestroy {
 
     placeOrder(): void {
         this.orderService.placeOrder(this.cart).subscribe({
-            complete: () => this.router.navigate(["/orders?success=true"]),
+            complete: () => {
+                this.cartService.clearCart();
+                this.router.navigate(["/orders"]);
+            },
             error: response => this.orderError = response.error.reason
         });
     }
 
-    removeProduct = (product: Product): void => this.cartService.removeProductFromCart(product);
+    removeItems(item: OrderItem): void {
+        if (item.amount >= this.cartService.amountInCart(item.product)) {
+            this.cartService.removeProductFromCart(item.product);
+        }
+        this.cartService.removeAmountFromCart(item);
+    }
 
-    totalCost = (): string => this.cart.items.reduce((cost, item) => cost + item.product.price / 100 * item.amount, 0).toFixed(2);
+    totalCost = (): string => totalPrice(this.cart.items).toFixed(2);
 }

@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable, Subject } from "rxjs";
+import { Observable, Subject, tap } from "rxjs";
 import { Paginated, PaginationRequest } from "../shared/pagination/paginated.model";
 import { CreateProductDto, Product } from "./product.model";
 
@@ -19,7 +19,8 @@ export class ProductService {
     }
 
     createProduct(dto: CreateProductDto): Observable<Product> {
-        return this.http.post<Product>("/products", dto);
+        return this.http.post<Product>("/products", dto).pipe(
+            tap((product: Product) => this.productSubject.next(product)));
     }
 
     updateProduct(id: string, dto: CreateProductDto): Observable<Product> {

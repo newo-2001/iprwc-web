@@ -6,6 +6,7 @@ import { IsNotAuthenticatedGuard } from "./auth/not-auth.guard";
 import { RegisterComponent } from "./auth/register/register.component";
 import { CartComponent } from "./shop/cart/cart.component";
 import { HomeComponent } from "./shop/home/home.component";
+import { OrdersComponent } from "./shop/orders/orders.component";
 
 const routes: Routes = [
     {
@@ -25,6 +26,11 @@ const routes: Routes = [
     {
         path: "cart",
         component: CartComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: "orders",
+        component: OrdersComponent,
         canActivate: [AuthGuard]
     }
 ];

@@ -7,12 +7,9 @@
         <hr>
         <span>{{inCart}} in cart</span>
         <div>
-            <fa-icon class="button" [icon]="icons.faCircleMinus" (click)="decrement()"></fa-icon>
             <span class="button" (click)="addToCart()">
-                <fa-icon [icon]="icons.faShoppingBasket"></fa-icon> {{amount > 0 ? "Add" : "Take"}} {{Math.abs(amount)}} {{amount > 0 ? "to" : "from"}} cart
+                <fa-icon [icon]="icons.faShoppingBasket"></fa-icon>  Add to cart
             </span>
-            <fa-icon class="button" [icon]="icons.faCirclePlus" (click)="increment()"></fa-icon>
         </div>
-        <span>€{{(product.price / 100 * amount).toFixed(2)}}</span>
     </div>
 </div>

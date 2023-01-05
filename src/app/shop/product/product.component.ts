@@ -16,30 +16,16 @@ export class ProductComponent implements OnInit {
 
     @Output() addToCartEvent: EventEmitter<OrderItem> = new EventEmitter<OrderItem>();
 
-    amount: number = 1;
-
     icons = { faShoppingBasket, faCirclePlus, faCircleMinus };
     Math = Math
 
     constructor() {}
 
     addToCart(): void {
-        const item: OrderItem = { amount: this.amount, product: this.product }
-        console.log(item);
-        this.addToCartEvent.emit(item);
+        this.addToCartEvent.emit({amount: 1, product: this.product});
     }
 
     ngOnInit(): void {}
-
-    increment() {
-        this.amount++;
-        if (this.amount == 0) this.amount = 1;
-    }
-
-    decrement() {
-        this.amount--;
-        if (this.amount == 0) this.amount = -1;
-    }
 
     getThumbnail = () => this.product.thumbnailUri ?? environment.missingThumbnailUrl;
 }

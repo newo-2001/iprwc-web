@@ -3,7 +3,7 @@
         <h3>Your cart contains {{cart.items.length}} item{{cart.items.length == 1 ? "" : "s"}}</h3>
         <ul>
             <li *ngFor="let item of cart.items">
-                <shop-cart-item [item]="item" (removeProductEvent)="removeProduct($event)"></shop-cart-item>
+                <shop-cart-item [item]="item" (removeProductEvent)="removeItems($event)"></shop-cart-item>
                 <hr>
             </li>
         </ul>

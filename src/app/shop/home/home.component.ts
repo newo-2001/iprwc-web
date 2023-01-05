@@ -14,8 +14,6 @@ import { AuthService } from "src/app/auth/auth.service";
 })
 export class HomeComponent implements OnInit, OnDestroy {
     products: Product[] = [];
-    page: PaginationRequest = {page: 1, pageSize: 3}
-    allLoaded = false;
     
     cart: OrderRequest = {items: []};
     cartSubscription?: Subscription;
@@ -23,7 +21,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     constructor(private productService: ProductService, private cartService: CartService, private authService: AuthService) {}
 
     ngOnInit(): void {
-        this.loadProducts();
+        this.loadProducts({page: 1, pageSize: 50});
         this.cartSubscription = this.cartService.cartSubject.subscribe(cart => this.cart = cart);
     }
 
@@ -44,11 +42,14 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     loggedIn = () => this.authService.isLoggedIn();
 
-    private loadProducts() {
-        this.productService.getProductPage(this.page).subscribe((products: Paginated<Product>) => {
+    private loadProducts(page: PaginationRequest) {
+        this.productService.getProductPage(page).subscribe((products: Paginated<Product>) => {
             this.products = this.products.concat(products.items);
-            this.allLoaded = products.page == products.totalPages;
-            this.page.page++;
+
+            page.page++;
+            if (products.page < products.totalPages) {
+                this.loadProducts(page);
+            }
         });
     }
 }

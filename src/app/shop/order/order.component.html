@@ -1,9 +1,15 @@
-<li>
-    <div>
+<div class="order" [class.collapsed]="collapsed">
+    <div class="header">
         <span>Order placed on <time attr.datetime="{{order.orderTime.toISOString()}}">{{order.orderTime.toLocaleString('nl-NL')}}</time></span>
-        <button (click)="cancelOrder()">Cancel order</button>
+        <span><fa-icon class="button" [class.fa-rotate-180]="!collapsed" [icon]="icons.faChevronDown" (click)="toggleCollapsed()"></fa-icon></span>
+        <span class="button" (click)="cancelOrder()"><fa-icon [icon]="icons.faTrashCan"></fa-icon> Cancel order</span>
     </div>
-    <ul *ngFor="let item of order.items">
-        <shop-order-item [item]="item"></shop-order-item>
-    </ul>
-</li>
+    <div #body class="body">
+        <hr>
+        <ul *ngFor="let item of order.items">
+            <shop-order-item [item]="item"></shop-order-item>
+        </ul>
+        <hr>
+        <span>Total price: €{{totalPrice()}}</span>
+    </div>
+</div>

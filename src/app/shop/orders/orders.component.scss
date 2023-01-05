@@ -1,0 +1,13 @@
+@import "../../../styles.scss";
+
+section {
+    max-width: $column-width;
+    margin: auto;
+    
+    ul {
+        text-align: left;
+        list-style: none;
+    }
+
+    text-align: center;
+}

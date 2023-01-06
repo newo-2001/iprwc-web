@@ -5,6 +5,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { RouterModule } from "@angular/router";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { SharedModule } from "../shared/shared.module";
+import { ShopModule } from "../shop/shop.module";
 import { CreateProductComponent } from "./create-product/create-product.component";
 
 @NgModule({
@@ -14,6 +15,6 @@ import { CreateProductComponent } from "./create-product/create-product.componen
     exports: [
         CreateProductComponent
     ],
-    imports: [CommonModule, FontAwesomeModule, SharedModule, RouterModule, BrowserModule, FormsModule]
+    imports: [CommonModule, FontAwesomeModule, SharedModule, RouterModule, BrowserModule, FormsModule, ShopModule]
 })
 export class AdminModule {}

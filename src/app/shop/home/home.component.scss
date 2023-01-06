@@ -1,5 +1,16 @@
 @import "../../../styles.scss";
 
+div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1em;
+
+    app-category-selector {
+        margin-left: 1em;
+    }
+}
+
 .products {
     padding: 0;
     position: relative;

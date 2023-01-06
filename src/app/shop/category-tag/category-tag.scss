@@ -1,0 +1,13 @@
+@import "../../../styles.scss";
+
+.category-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.category-tag {
+    margin-right: $margin;
+    margin-bottom: $margin;
+    padding: 2px;
+    border-radius: 4px;
+}

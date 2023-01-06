@@ -1,0 +1,13 @@
+@import "../../../../styles.scss";
+
+select {
+    background-color: $color-background-dark;
+    color: $color-text;
+    padding: $margin;
+    border-radius: 7px;
+    border: 0;
+
+    option {
+        background-color: $color-background-dark;
+    }
+}

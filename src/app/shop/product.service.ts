@@ -14,6 +14,10 @@ export class ProductService {
         return this.http.get<Paginated<Product>>(`/products?page=${page.page}&pageSize=${page.pageSize}`);
     }
 
+    getProductPageByCategory(page: PaginationRequest, categoryId: string): Observable<Paginated<Product>> {
+        return this.http.get<Paginated<Product>>(`/products?page=${page.page}&pageSize=${page.pageSize}&category=${categoryId}`);
+    }
+
     getProductById(id: string): Observable<Product> {
         return this.http.get<Product>(`/products/${id}`);
     }

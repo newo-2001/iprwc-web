@@ -7,6 +7,10 @@ import { ProductService } from "../product.service";
 import { Subscription } from "rxjs";
 import { AuthService } from "src/app/auth/auth.service";
 import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
+import { Category } from "../category.model";
+import { CategoryFilterPipe } from "../category-filter.pipe";
+import { Optional } from "src/app/shared/optional.model";
+import { CategoryService } from "../category.service";
 
 @Component({
     selector: "shop-home",
@@ -15,16 +19,24 @@ import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
 })
 export class HomeComponent implements OnInit, OnDestroy {
     products: Product[] = [];
+    categories: Category[] = [];
+    activeCategoryFilter?: Category;
     
     cart: OrderRequest = {items: []};
     cartSubscription?: Subscription;
 
     icons = { faCirclePlus };
 
-    constructor(private productService: ProductService, private cartService: CartService, private authService: AuthService) {}
+    constructor(private productService: ProductService,
+                private cartService: CartService,
+                private categoryService: CategoryService,
+                private authService: AuthService) {
+                    this.loadProducts({page: 1, pageSize: 50});
+                    this.categoryService.getAllCategories()
+                        .subscribe(categories => this.categories = categories);
+                }
 
     ngOnInit(): void {
-        this.loadProducts({page: 1, pageSize: 50});
         this.cartSubscription = this.cartService.cartSubject.subscribe(cart => this.cart = cart);
     }
 
@@ -45,6 +57,8 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     isAdmin = () => this.authService.isAdmin();
     loggedIn = () => this.authService.isLoggedIn();
+
+    filterByCategory = (category: Optional<Category>) => this.activeCategoryFilter = category ?? undefined;
 
     private loadProducts(page: PaginationRequest) {
         this.productService.getProductPage(page).subscribe((products: Paginated<Product>) => {

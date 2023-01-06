@@ -9,7 +9,18 @@
         <input name="thumbnailUri" placeholder="Link to thumbnail image" [ngModel]="product.thumbnailUri">
         <label for="description">Description</label>
         <textarea name="description" placeholder="Description" [ngModel]="product.description"></textarea>
+        <label for="category">Categories</label>
+        <div>
+            <div class="category-list">
+                <span (click)="removeCategory(category)" *ngFor="let category of product?.categories ?? []" class="category-tag"><fa-icon [icon]="icons.faTrashCan"></fa-icon> {{category.name}}</span>
+            </div>
+            <div *ngIf="(product?.categories?.length ?? 0) < categories.length">
+                <app-category-selector [categories]="categories | except: productIsNotInCategory.bind(this)" [(selectedCategory)]="selectedCategory"></app-category-selector>
+                <button type="button" (click)="addCategory(selectedCategory ?? undefined)"><fa-icon [icon]="icons.faPlus"></fa-icon> Add product to category</button>
+            </div>
+        </div>
         <span class="error">{{formError}}</span>
+        <hr>
         <div>
             <button>{{this.product.id ? "Update" : "Create"}} product</button>
             <button *ngIf="product.id" type="button" (click)="deleteProduct()"><fa-icon [icon]="icons.faTrashCan"></fa-icon> Delete product</button>

@@ -46,5 +46,9 @@ export class CartComponent implements OnInit, OnDestroy {
         this.cartService.removeAmountFromCart(item);
     }
 
+    clearCart(): void {
+        this.cartService.clearCart();
+    }
+
     totalCost = (): string => totalPrice(this.cart.items).toFixed(2);
 }

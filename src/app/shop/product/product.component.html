@@ -2,7 +2,9 @@
     <h3>{{product.name}}</h3>
     <fa-icon class="button" *ngIf="editable" [icon]="icons.faPencil" (click)="edit()"></fa-icon>
     <img src="{{getThumbnail()}}">
-    <hr>
+    <div class="category-list">
+        <span class="category-tag" [class.active]="isActiveCategory(category)" *ngFor="let category of product?.categories ?? []">{{category.name}}</span>
+    </div>
     <p class="description">{{product.description ?? ""}}</p>
     <span class="price">€{{(product.price / 100).toFixed(2)}}</span>
     <div *ngIf="purchasable">

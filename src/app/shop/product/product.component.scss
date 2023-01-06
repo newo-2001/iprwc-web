@@ -19,13 +19,14 @@
 
     .description {
         font-size: 0.9em;
-        flex-grow: 1;
-        text-align: left;
+        text-align: center;
+        flex-grow: 2;
     }
 
     h3 {
         max-width: 90%;
         margin: auto;
+        flex-grow: 1;
     }
 
     img {
@@ -58,5 +59,18 @@
         position: absolute;
         top: 1em;
         right: 1em;
+    }
+
+    .category-tag {
+        background-color: $color-background;
+
+        &.active {
+            background-color: $color-primary;
+        }
+    }
+
+    .category-list {
+        margin-top: $margin;
+        justify-content: center;
     }
 }

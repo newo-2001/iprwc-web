@@ -6,6 +6,7 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { SharedModule } from "../shared/shared.module";
 import { CartItemComponent } from "./cart-item/cart-item.component";
 import { CartComponent } from "./cart/cart.component";
+import { CategoryFilterPipe } from "./category-filter.pipe";
 import { HomeComponent } from './home/home.component';
 import { OrderItemComponent } from "./order-item/order-item.component";
 import { OrderComponent } from "./order/order.component";
@@ -20,7 +21,8 @@ import { ProductComponent } from "./product/product.component";
         CartItemComponent,
         OrderComponent,
         OrdersComponent,
-        OrderItemComponent
+        OrderItemComponent,
+        CategoryFilterPipe
     ],
     exports: [
         HomeComponent,
@@ -29,7 +31,8 @@ import { ProductComponent } from "./product/product.component";
         CartItemComponent,
         OrderComponent,
         OrdersComponent,
-        OrderItemComponent
+        OrderItemComponent,
+        CategoryFilterPipe
     ],
     imports: [CommonModule, FontAwesomeModule, SharedModule, RouterModule, BrowserModule]
 })

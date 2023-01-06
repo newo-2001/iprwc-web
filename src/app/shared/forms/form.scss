@@ -12,14 +12,12 @@ form {
         background-color: $color-background-dark;
     }
 
-    *:not(.error) {
+    & > *:not(.error) {
         color: $color-text;
         margin-top: $margin-big;
     }
 
     button {
-        font-size: 1.1rem;
-
         &:hover {
             background-color: $color-primary;
         }
@@ -30,5 +28,7 @@ form {
         border: none;
         border-radius: 5px;
         height: 6em;
+        padding: $margin;
+        resize: none;
     }
 }

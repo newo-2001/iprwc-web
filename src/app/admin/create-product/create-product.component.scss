@@ -9,8 +9,48 @@ section {
         text-align: center;
     }
 
-    div {
+    form > div:first-of-type {
         display: flex;
-        justify-content: space-evenly;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    form > div:last-of-type {
+        display: flex;
+        justify-content: center;
+        
+        button {
+            margin-left: 1em;
+        }
+    }
+
+    .category-list {
+        padding: 0;
+        margin-bottom: 1em;
+    }
+
+    app-category-selector {
+        margin-right: 1em;
+    }
+
+    button, app-category-selector {
+        font-size: 0.9em !important;
+    }
+
+    .category-tag {
+        padding: 5px;
+        font-size: 0.8em;
+        background-color: $color-background-dark;
+        transition: background-color 0.2s ease;
+        cursor: pointer;
+        user-select: none;
+
+        &:hover {
+            background-color: $color-primary;
+        }
+    }
+
+    .error {
+        margin-top: $margin;
     }
 }

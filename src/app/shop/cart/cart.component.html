@@ -13,6 +13,7 @@
             <div class="options">
                 <button (click)="placeOrder()"><fa-icon [icon]="icons.faCreditCard"></fa-icon> Place order</button>
                 <button [routerLink]="['/']"><fa-icon [icon]="icons.faShoppingCart"></fa-icon> Continue shopping</button>
+                <button (click)="clearCart()"><fa-icon [icon]="icons.faTrashCan"></fa-icon> Clear cart</button>
             </div>
             <span class="error">{{orderError}}</span>
         </div>

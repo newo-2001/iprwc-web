@@ -1,7 +1,17 @@
 <section>
+    <div>
+        <h4>Filter by category:</h4>
+        <app-category-selector [categories]="categories" (selectedCategoryChange)="filterByCategory($event)" [includeNoCategory]="true"></app-category-selector>
+    </div>
     <ul class="products">
-        <li *ngFor="let product of products">
-            <shop-product [editable]="isAdmin()" [purchasable]="loggedIn()" [inCart]="amountInCart(product)" [product]="product" (addToCartEvent)="addToCart($event)"></shop-product>
+        <li *ngFor="let product of products | categoryFilter: activeCategoryFilter">
+            <shop-product [activeCategoryFilter]="activeCategoryFilter"
+                          [editable]="isAdmin()"
+                          [purchasable]="loggedIn()"
+                          [inCart]="amountInCart(product)"
+                          [product]="product"
+                          (addToCartEvent)="addToCart($event)">
+            </shop-product>
         </li>
         <li class="add-product" *ngIf="isAdmin()">
             <fa-icon class="button" [icon]="icons.faCirclePlus" [routerLink]="['/products', 'create']"></fa-icon>

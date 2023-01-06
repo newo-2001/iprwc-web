@@ -1,4 +1,4 @@
-import { AfterContentChecked, Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, ViewChild } from "@angular/core";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { Optional } from "src/app/shared/optional.model";
 import { Category } from "../../../shop/category.model";
 
@@ -14,7 +14,9 @@ export class CategorySelectorComponent {
     set categories(categories: Category[]) {
         this._categories = categories;
 
-        if (!this.includeNoCategory && !this.selectedCategory) {
+        console.log(categories, this.selectedCategory);
+
+        if (!this.noCategory && !this.selectedCategory) {
             this.selectedCategory = categories[0];
             this.onChange(this.selectedCategory);
             return;
@@ -30,7 +32,7 @@ export class CategorySelectorComponent {
         return this._categories;
     }
 
-    @Input() includeNoCategory: boolean = false;
+    @Input() noCategory?: string;
     @Input() selectedCategory: Optional<Category>;
     @Output() selectedCategoryChange: EventEmitter<Optional<Category>> = new EventEmitter<Optional<Category>>();
 

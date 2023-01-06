@@ -1,0 +1,28 @@
+@import "../../../styles.scss";
+
+section {
+    max-width: $column-width;
+    margin: auto;
+    
+    h3 {
+        text-align: center;
+    }
+
+    form {
+        align-items: center;
+
+        div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            & > *:not(:first-child) {
+                margin-left: $margin;
+            }
+        }
+
+        input {
+            max-width: 200px;
+        }
+    }
+}

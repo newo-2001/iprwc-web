@@ -1,7 +1,8 @@
 <section>
     <div>
         <h4>Filter by category:</h4>
-        <app-category-selector [categories]="categories" (selectedCategoryChange)="filterByCategory($event)" [includeNoCategory]="true"></app-category-selector>
+        <app-category-selector [categories]="categories" (selectedCategoryChange)="filterByCategory($event)" [noCategory]="'No filter'"></app-category-selector>
+        <fa-icon class="button" [routerLink]="['/categories', 'edit']" *ngIf="isAdmin()" [icon]="icons.faPencil"></fa-icon>
     </div>
     <ul class="products">
         <li *ngFor="let product of products | categoryFilter: activeCategoryFilter">

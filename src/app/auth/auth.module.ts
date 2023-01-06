@@ -5,12 +5,13 @@ import { FormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { AuthInterceptor } from "./auth-interceptor";
+import { AuthRoutingModule } from "./auth-routing.module";
 import { LoginComponent } from "./login/login.component";
 import { RegisterComponent } from "./register/register.component";
 
 @NgModule({
     declarations: [LoginComponent, RegisterComponent],
-    imports: [CommonModule, FontAwesomeModule, RouterModule, FormsModule],
+    imports: [CommonModule, FontAwesomeModule, RouterModule, FormsModule, AuthRoutingModule],
     providers: [{
         provide: HTTP_INTERCEPTORS,
         useClass: AuthInterceptor,

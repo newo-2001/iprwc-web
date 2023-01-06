@@ -6,7 +6,7 @@ import { Product } from "../product.model";
 import { ProductService } from "../product.service";
 import { Subscription } from "rxjs";
 import { AuthService } from "src/app/auth/auth.service";
-import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
+import { faCirclePlus, faPencil } from "@fortawesome/free-solid-svg-icons";
 import { Category } from "../category.model";
 import { CategoryFilterPipe } from "../category-filter.pipe";
 import { Optional } from "src/app/shared/optional.model";
@@ -17,15 +17,14 @@ import { CategoryService } from "../category.service";
     templateUrl: "./home.component.html",
     styleUrls: ["./home.component.scss"]
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent {
     products: Product[] = [];
     categories: Category[] = [];
     activeCategoryFilter?: Category;
     
     cart: OrderRequest = {items: []};
-    cartSubscription?: Subscription;
 
-    icons = { faCirclePlus };
+    icons = { faCirclePlus, faPencil };
 
     constructor(private productService: ProductService,
                 private cartService: CartService,
@@ -35,14 +34,6 @@ export class HomeComponent implements OnInit, OnDestroy {
                     this.categoryService.getAllCategories()
                         .subscribe(categories => this.categories = categories);
                 }
-
-    ngOnInit(): void {
-        this.cartSubscription = this.cartService.cartSubject.subscribe(cart => this.cart = cart);
-    }
-
-    ngOnDestroy(): void {
-        this.cartSubscription?.unsubscribe();
-    }
 
     addToCart(item: OrderItem): void {
         const inCart = this.amountInCart(item.product)

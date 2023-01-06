@@ -12,6 +12,7 @@ import { OrderItemComponent } from "./order-item/order-item.component";
 import { OrderComponent } from "./order/order.component";
 import { OrdersComponent } from "./orders/orders.component";
 import { ProductComponent } from "./product/product.component";
+import { ShopRoutingModule } from "./shop-routing.module";
 
 @NgModule({
     declarations: [
@@ -34,6 +35,6 @@ import { ProductComponent } from "./product/product.component";
         OrderItemComponent,
         CategoryFilterPipe
     ],
-    imports: [CommonModule, FontAwesomeModule, SharedModule, RouterModule, BrowserModule]
+    imports: [CommonModule, FontAwesomeModule, SharedModule, RouterModule, BrowserModule, ShopRoutingModule]
 })
 export class ShopModule {}

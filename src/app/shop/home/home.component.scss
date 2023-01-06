@@ -6,8 +6,8 @@ div {
     align-items: center;
     margin-bottom: 1em;
 
-    app-category-selector {
-        margin-left: 1em;
+    app-category-selector, fa-icon {
+        margin-left: $margin;
     }
 }
 
@@ -25,7 +25,8 @@ div {
     }
 
     .add-product {
-        margin: 0.25em 0.25em 0 0.25em;
+        margin: 0.25em 0.25em 0.1em 0.25em;
+        min-height: 200px;
         width: 225px;
         background-color: $color-background-dark;
         border-radius: 10px;

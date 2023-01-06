@@ -3,6 +3,6 @@ export interface Category {
     name: string;
 }
 
-export interface createCategoryDto {
+export interface CreateCategoryDto {
     name: string
 }

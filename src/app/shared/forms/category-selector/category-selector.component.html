@@ -1,4 +1,4 @@
 <select #selection name="category" [(ngModel)]="selectedCategory" (change)="onChange(selectedCategory)">
-    <option *ngIf="includeNoCategory" [ngValue]="undefined">No category</option>
+    <option *ngIf="noCategory" [ngValue]="undefined">{{noCategory}}</option>
     <option *ngFor="let category of categories" [ngValue]="category">{{category.name}}</option>
 </select>

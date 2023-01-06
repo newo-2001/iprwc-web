@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { Category, createCategoryDto } from "./category.model";
+import { Category, CreateCategoryDto } from "./category.model";
 
 @Injectable({ providedIn: "root" })
 export class CategoryService {
@@ -15,7 +15,7 @@ export class CategoryService {
         return this.http.delete<void>(`/categories/${categoryId}`);
     }
 
-    createCategory(category: createCategoryDto): Observable<Category> {
+    createCategory(category: CreateCategoryDto): Observable<Category> {
         return this.http.post<Category>("/categories", category);
     }
 
@@ -23,7 +23,7 @@ export class CategoryService {
         return this.http.get<Category>(`/categories/${categoryId}`);
     }
 
-    updateCategory(categoryId: string, category: createCategoryDto): Observable<Category> {
+    updateCategory(categoryId: string, category: CreateCategoryDto): Observable<Category> {
         return this.http.put<Category>(`/categories/${categoryId}`, category);
     }
 }

@@ -57,8 +57,6 @@ export class EditCategoriesComponent {
             return;
         }
 
-        console.log(category);
-
         this.category = { ...category };
     }
 }

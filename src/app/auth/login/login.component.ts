@@ -27,7 +27,6 @@ export class LoginComponent {
                 if (error.status = 401) {
                     this.formError = "Invalid email password combination"
                 }
-                console.log(error);
             }
         });
     }

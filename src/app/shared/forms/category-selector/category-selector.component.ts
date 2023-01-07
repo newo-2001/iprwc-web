@@ -14,8 +14,6 @@ export class CategorySelectorComponent {
     set categories(categories: Category[]) {
         this._categories = categories;
 
-        console.log(categories, this.selectedCategory);
-
         if (!this.noCategory && !this.selectedCategory) {
             this.selectedCategory = categories[0];
             this.onChange(this.selectedCategory);

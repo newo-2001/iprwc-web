@@ -47,10 +47,6 @@ export class EditCategoriesComponent {
         });
     }
 
-    onCategoryUpdated(category: Category) {
-        
-    }
-
     categoryChange(category: Optional<Category>): void {
         if (!category) {
             this.category = { name: ""};
@@ -58,5 +54,17 @@ export class EditCategoriesComponent {
         }
 
         this.category = { ...category };
+    }
+
+    deleteCategory(category: Optional<Category>): void {
+        if (!category) return;
+        
+        this.categoryService.deleteCategory(category.id).subscribe({
+            next: () => {
+                this.categories.splice(this.categories.indexOf(category), 1);
+                this.selectedCategory = undefined;
+            },
+            error: response => this.formError = response.error.reason
+        })
     }
 }

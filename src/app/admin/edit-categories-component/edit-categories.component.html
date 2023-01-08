@@ -3,7 +3,7 @@
     <form #categoriesForm="ngForm" autocomplete="off" (ngSubmit)="submit()">
         <div>
             <app-category-selector [noCategory]="'Create new category'" [categories]="categories" [(selectedCategory)]="selectedCategory" (selectedCategoryChange)="categoryChange($event)"></app-category-selector>
-            <button type="button" *ngIf="selectedCategory"><fa-icon [icon]="icons.faTrashCan"></fa-icon> Delete category</button>
+            <button type="button" (click)="deleteCategory(selectedCategory)" *ngIf="selectedCategory"><fa-icon [icon]="icons.faTrashCan"></fa-icon> Delete category</button>
         </div>
         <div>
             <input name="name" type="text" placeholder="Name" [(ngModel)]="category.name"/>

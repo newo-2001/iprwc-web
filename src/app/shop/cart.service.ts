@@ -62,6 +62,8 @@ export class CartService {
         return this.cartSubject.getValue().items.find(x => x.product.id == product.id)?.amount ?? 0;
     }
 
+    totalItems = (): number => this.cartSubject.getValue().items.reduce((acc, item) => acc + item.amount, 0);
+
     private saveCart(cart: OrderRequest): void {
         localStorage.setItem("cart", JSON.stringify(cart));
         this.cartSubject.next(cart);

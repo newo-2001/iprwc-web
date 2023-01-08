@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Paginated, PaginationRequest } from "src/app/shared/pagination/paginated.model";
-import { OrderItem, OrderRequest } from "../order.model";
+import { OrderRequest } from "../order.model";
 import { CartService } from "../cart.service";
 import { Product } from "../product.model";
 import { ProductService } from "../product.service";

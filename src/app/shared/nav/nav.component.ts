@@ -12,26 +12,12 @@ import { Optional } from "../optional.model";
     templateUrl: "./nav.component.html",
     styleUrls: ["./nav.component.scss"]
 })
-export class NavComponent implements OnInit, OnDestroy {
-    faShoppingCart = faShoppingCart
-
-    userInfoSubscription?: Subscription;
-    userInfo: Optional<UserInfo> = null;
-
-    cartSubscription?: Subscription
-    cart: OrderRequest = {items:[]};
+export class NavComponent {
+    icons = { faShoppingCart };
 
     constructor(private authService: AuthService, private cartService: CartService) {}
 
-    ngOnInit(): void {
-        this.userInfoSubscription = this.authService.userInfo.subscribe(userInfo => this.userInfo = userInfo)
-        this.cartSubscription = this.cartService.cartSubject.subscribe(cart => this.cart = cart);
-    }
-
-    ngOnDestroy(): void {
-        this.userInfoSubscription?.unsubscribe();
-        this.cartSubscription?.unsubscribe();
-    }
+    totalItemsInCart = () => this.cartService.totalItems();
 
     logout = () => this.authService.logout();
     isLoggedIn = () => this.authService.isLoggedIn();

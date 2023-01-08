@@ -17,12 +17,13 @@ import { CategoryService } from "../category.service";
     templateUrl: "./home.component.html",
     styleUrls: ["./home.component.scss"]
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit, OnDestroy {
     products: Product[] = [];
     categories: Category[] = [];
     activeCategoryFilter?: Category;
     
     cart: OrderRequest = {items: []};
+    cartSubscription?: Subscription;
 
     icons = { faCirclePlus, faPencil };
 
@@ -34,14 +35,17 @@ export class HomeComponent {
                     this.categoryService.getAllCategories()
                         .subscribe(categories => this.categories = categories);
                 }
+    
+    ngOnInit(): void {
+        this.cartSubscription = this.cartService.cartSubject.subscribe(cart => this.cart = cart);
+    }
 
-    addToCart(item: OrderItem): void {
-        const inCart = this.amountInCart(item.product)
-        if (inCart + item.amount < 0) {
-            item.amount = -inCart;
-        }
+    ngOnDestroy(): void {
+        this.cartSubscription?.unsubscribe();
+    }
 
-        this.cartService.addToCart(item);
+    addToCart(product: Product): void {
+        this.cartService.addToCart({product, amount: 1});
     }
 
     amountInCart = (product: Product): number => this.cart.items.find(item => item.product.id == product.id)?.amount ?? 0;

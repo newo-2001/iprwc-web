@@ -18,7 +18,7 @@ export class ProductComponent implements OnInit {
     @Input() editable = false;
     @Input() activeCategoryFilter?: Category;
 
-    @Output() addToCartEvent: EventEmitter<OrderItem> = new EventEmitter<OrderItem>();
+    @Output() addToCartEvent: EventEmitter<Product> = new EventEmitter<Product>();
 
     icons = { faShoppingBasket, faPencil };
     Math = Math
@@ -26,7 +26,7 @@ export class ProductComponent implements OnInit {
     constructor(private router: Router) {}
 
     addToCart(): void {
-        this.addToCartEvent.emit({amount: 1, product: this.product});
+        this.addToCartEvent.emit(this.product);
     }
 
     edit(): void {

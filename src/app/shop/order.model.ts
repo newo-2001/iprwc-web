@@ -17,5 +17,5 @@ export interface OrderItem {
 }
 
 export function totalPrice(items: OrderItem[]) {
-    return items.reduce((cost, item) => cost + item.product.price / 100 * item.amount, 0);
+    return items.reduce((cost, item) => cost + item.product.price * item.amount, 0);
 }

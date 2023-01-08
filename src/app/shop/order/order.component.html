@@ -6,10 +6,12 @@
     </div>
     <div #body class="body">
         <hr>
-        <ul *ngFor="let item of order.items">
-            <shop-order-item [item]="item"></shop-order-item>
+        <ul>
+            <li *ngFor="let item of order.items">
+                <shop-order-item [item]="item"></shop-order-item>
+            </li>
         </ul>
         <hr>
-        <span>Total price: €{{totalPrice()}}</span>
+        <span>Total price: {{totalPrice() | price}}</span>
     </div>
 </div>

@@ -7,18 +7,21 @@ import { CategorySelectorComponent } from "./forms/category-selector/category-se
 import { BrowserModule } from "@angular/platform-browser";
 import { ExceptPipe } from "./except.pipe";
 import { FormsModule } from "@angular/forms";
+import { PricePipe } from "./price.pipe";
 
 @NgModule({
     declarations: [
         NavComponent,
         CategorySelectorComponent,
-        ExceptPipe
+        ExceptPipe,
+        PricePipe
     ],
     imports: [CommonModule, FontAwesomeModule, RouterModule, BrowserModule, FormsModule],
     exports: [
         NavComponent,
         CategorySelectorComponent,
-        ExceptPipe
+        ExceptPipe,
+        PricePipe
     ]
 })
 export class SharedModule { }

@@ -21,7 +21,7 @@ export class OrderComponent {
     }
 
     totalPrice() {
-        return totalPrice(this.order.items).toFixed(2);
+        return totalPrice(this.order.items);
     }
 
     // Digusting but css transitions do not work on auto values

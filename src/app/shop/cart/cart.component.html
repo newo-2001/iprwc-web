@@ -9,7 +9,7 @@
         </ul>
 
         <div class="menu">
-            <span>The items in your cart sum to a total of €{{totalCost()}}</span>
+            <span>The items in your cart sum to a total of {{totalPrice(cart.items) | price}}</span>
             <div class="options">
                 <button (click)="placeOrder()"><fa-icon [icon]="icons.faCreditCard"></fa-icon> Place order</button>
                 <button [routerLink]="['/']"><fa-icon [icon]="icons.faShoppingCart"></fa-icon> Continue shopping</button>

@@ -1,4 +1,4 @@
-$color-background: #383838;//#606060;
+$color-background: #606060;//#1B701B;//
 $color-background-light: lighten($color-background, 20%);
 $color-background-dark: darken($color-background, 20%);
 
@@ -28,7 +28,7 @@ html {
 
 hr {
     background-color: $color-white;
-    width: 100%;
+    width: 98%;
 }
 
 h1, h2, h3, h4, h5, p {

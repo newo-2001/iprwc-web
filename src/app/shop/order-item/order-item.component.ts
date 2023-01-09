@@ -11,4 +11,6 @@ export class OrderItemComponent {
     @Input() item: OrderItem = null!;
 
     getThumbnail = () => this.item.product.thumbnailUri ?? environment.missingThumbnailUrl;
+
+    totalPrice = () => this.item.amount * this.item.product.price;
 }

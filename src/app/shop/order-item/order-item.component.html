@@ -2,6 +2,6 @@
     <img src="{{getThumbnail()}}"/>
     <div>
         <h5>{{item.product.name}}</h5>
-        <span>x{{item.amount}} (€{{(item.product.price / 100 * item.amount).toFixed(2)}})</span>
+        <span>x{{item.amount}} ({{totalPrice() | price }})}})</span>
     </div>
 </div>

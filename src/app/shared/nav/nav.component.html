@@ -1,5 +1,5 @@
 <nav>
-    <div><a [routerLink]="['/']" routerLinkActive="active">Garbage Gifts</a></div>
+    <div><a [routerLink]="['/']" routerLinkActive="active">The EDM record shop</a></div>
     <div *ngIf="isLoggedIn()" class="cart">
         <div *ngIf="totalItemsInCart() > 0" class="counter"><span>{{totalItemsInCart()}}</span></div>
         <a [routerLink]="['/cart']" routerLinkActive="active">

@@ -8,7 +8,7 @@ import { AuthService } from "./auth/auth.service";
     styleUrls: ["./app.component.scss"]
 })
 export class AppComponent implements OnInit {
-    title = "Garbage Gifts";
+    title = "The EDM record shop";
 
     constructor(private authService: AuthService, titleService: Title) {
         titleService.setTitle(this.title);
